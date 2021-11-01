@@ -2,16 +2,21 @@ use rand::Rng;
 use std::io;
 
 pub mod guessing {
+    
+    pub trait Guess {
+        fn new(num: u32) -> Numb {
+            Numb { num }
+        }
+
+        fn ckeo(&self);
+    }
+    
     pub struct Numb {
         pub num: u32,
     }
 
-    impl Numb {
-        pub fn new(num: u32) -> Numb {
-            Numb { num }
-        }
-
-        pub fn ckeo(&self) {
+    impl Guess for Numb {
+        fn ckeo(&self) {
             if self.num % 2 == 0 {
                 println!("\nSecret number is an even number!");
             } else {
@@ -38,6 +43,6 @@ pub fn contag() -> bool {
 
 pub fn sect() -> guessing::Numb {
     guessing::Numb {
-        num: rand::thread_rng().gen_range(1..101),
+        num: rand::thread_rng().gen_range(1..=100),
     }
 }
